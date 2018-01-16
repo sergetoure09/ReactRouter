@@ -9,7 +9,7 @@ class Fullpost extends Component{
     componentDidUpdate(){
         if(this.props.id){
             if(!this.state.loadedpost || this.state.loadedpost.id !==this.props.id){
-            let url='https://jsonplaceholder.typicode.com/posts/'+this.props.id
+            let url=('https://jsonplaceholder.typicode.com/posts/'+this.props.id)
             axios.get(url).then(response=>{
             this.setState({
                 loadedpost:response.data
@@ -17,9 +17,14 @@ class Fullpost extends Component{
         })
     }}}
 
+    deleteposthandler=()=>{
+        let url='https://jsonplaceholder.typicode.com/posts/'+this.props.id
+        axios.delete(url).then(resp=>console.log(resp))
+    }
+
     render(){
 
-        let postselected= <Aux><h1>select a post!</h1></Aux>
+        let postselected= <Aux><h1>select a post!</h1><p>A dummy paragraph...</p></Aux>
             if(this.props.id){
                 postselected=<Aux><h1>Content loading ...</h1></Aux>
             }
@@ -28,11 +33,11 @@ class Fullpost extends Component{
                                         <h1>{this.state.loadedpost.title}</h1>
                                         <p>{this.state.loadedpost.body}</p>
                                         <div className="edit">
-                                        <button className="Delete">Delete</button></div>
+                                        <button className="Delete" onClick={this.deleteposthandler}>Delete</button></div>
                                 </Aux>
             }
             
-        return <div>{postselected}</div>
+        return <div style={{'margin':'10px auto','width':'600px','height':' 200px'}}>{postselected}</div>
         
              
 

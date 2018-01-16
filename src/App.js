@@ -4,13 +4,15 @@ import Header from './blog/header/header'
 import Post from './blog/posts/post'
 import axios from 'axios'
 import Fullpost from './fullpost'
+import Newpost from './newpost'
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state={
       posts:[],
-      postselected:null
+      postselected:null,
+      error:false
     }
   }
 selectHandler=(id)=>{
@@ -25,22 +27,24 @@ componentDidMount(){
   axios.get(rul).then(response=> {
    
     this.setState({
-      posts:response.data.slice(0,5)
+      posts:response.data.slice(0,10)
     })
-  })
+  }).catch(error=>this.setState({error:error}))
 
 }
 
   render() {
-    let posts=this.state.posts.map((post)=><Post 
+    let posts=<h1 style={{'color':'red'}}>Something went wrong!</h1>
+   if( !this.state.error){ posts=this.state.posts.map((post)=><Post 
                   key={post.id} 
                   info={post}
-                  clicked={()=>this.selectHandler(post.id)}/>)
+                  clicked={()=>this.selectHandler(post.id)}/>)}
     return (
       <div className="App">
       <Header />
       {posts}
       <Fullpost id={this.state.postselected}/>
+      <Newpost/>
        
       </div>
     );
