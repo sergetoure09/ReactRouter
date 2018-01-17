@@ -22,7 +22,7 @@ selectHandler=(id)=>{
 
 }
 componentDidMount(){
-  let rul='https://jsonplaceholder.typicode.com/posts'
+  let rul='/posts'
   
   axios.get(rul).then(response=> {
    

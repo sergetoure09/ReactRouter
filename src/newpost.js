@@ -31,7 +31,7 @@ class Newpost extends Component{
         })
     }
     datahandler=()=>{
-        let url='https://jsonplaceholder.typicode.com/posts'
+        let url='posts'
         let postdata={...this.state}
         const promise=axios.post(url,postdata)
         promise.then(response=>console.log(response.data))
