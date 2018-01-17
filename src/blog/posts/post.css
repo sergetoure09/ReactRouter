@@ -1,11 +1,11 @@
 .post{
-    width: 250px;
+    width: 350px;
     padding: 10px;
     height: 300px;  
     margin: 20px;
     border: 1px solid grey;
     border-radius: 5px;
-    display: inline-block;
+    display: inline-flex;
     cursor: pointer
 }
 .post:hover{
