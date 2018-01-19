@@ -44,16 +44,15 @@ class Newpost extends Component{
         return(
             <Aux classes={classes.npost}>
                 <h2>Add a post</h2>
-                <label>title</label>
+                <label>title   :</label><br/>
                 <input type='text' value={this.state.title} onChange={this.handletitle}/> <br/>
-                <label>content</label>
+                <label>content   :</label><br/>
                 <textarea value={this.state.body} onChange={this.handletext}></textarea><br/>
-                <label>title</label>
                 <select value={this.state.author} onChange={(e)=>this.setState({author:e.target.value})}>
                     <option value="Abou">Abou</option>
                     <option value="Karla">Karla</option>
                     <option value="Rokya">Rokya</option>
-                </select>
+                </select><br/>
                 <button onClick={this.datahandler}>Submit</button>
 
                 </Aux>

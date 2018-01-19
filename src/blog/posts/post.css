@@ -1,12 +1,13 @@
 .post{
-    width: 350px;
+    width: 250px;
     padding: 10px;
     height: 300px;  
     margin: 20px;
     border: 1px solid grey;
     border-radius: 5px;
     display: inline-flex;
-    cursor: pointer
+    cursor: pointer;
+    margin-top: 50px;
 }
 .post:hover{
     background-color: rgba(127, 255, 212, 0.308);

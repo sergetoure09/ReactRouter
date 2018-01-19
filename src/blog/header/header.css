@@ -5,4 +5,33 @@
     position: fixed;
     top: 0;
     left: 0;
+    
 }
+
+.header nav a{
+    text-decoration: none;
+    margin: 10px;
+    font-size: 1em;
+    color: rgb(10, 141, 87);
+    font-weight: bolder;
+    text-justify: distribute;
+    padding: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    float: right
+   
+
+}
+ .header nav a:hover{
+     color: black;
+     border-bottom: 3px solid #2d5e19;
+     background-color: bisque
+ }
+ .header nav a.active{
+    background-color: bisque
+    
+ }
+ .header nav a.my_active{
+    background-color:ghostwhite 
+    
+ }

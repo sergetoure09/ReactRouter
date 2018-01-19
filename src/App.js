@@ -1,54 +1,19 @@
 import React, { Component } from 'react';
-import './App.css';
-import Header from './blog/header/header'
-import Post from './blog/posts/post'
-import axios from 'axios'
-import Fullpost from './fullpost'
-import Newpost from './newpost'
-
-class App extends Component {
-  constructor(props){
-    super(props);
-    this.state={
-      posts:[],
-      postselected:null,
-      error:false
-    }
-  }
-selectHandler=(id)=>{
-  this.setState({
-    postselected:id
-  })
-
-}
-componentDidMount(){
-  let rul='/posts'
+import classes from './App.css';
+import Blog from './Blog'
+import { BrowserRouter } from 'react-router-dom'
   
-  axios.get(rul).then(response=> {
-   
-    this.setState({
-      posts:response.data.slice(0,10)
-    })
-  }).catch(error=>this.setState({error:error}))
 
-}
 
-  render() {
-    let posts=<h1 style={{'color':'red'}}>Something went wrong!</h1>
-   if( !this.state.error){ posts=this.state.posts.map((post)=><Post 
-                  key={post.id} 
-                  info={post}
-                  clicked={()=>this.selectHandler(post.id)}/>)}
-    return (
-      <div className="App">
-      <Header />
-      {posts}
-      <Fullpost id={this.state.postselected}/>
-      <Newpost/>
+const App=props=>{
+    return(
+        <div className={classes.App}>
+        <BrowserRouter>
+        <Blog/>
+        </BrowserRouter>
+        </div>
        
-      </div>
-    );
-  }
+    )
 }
 
-export default App;
+export default App
