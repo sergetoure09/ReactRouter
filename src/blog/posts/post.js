@@ -1,14 +1,23 @@
-import React from 'react'
+import React, { Component } from 'react'
 import classes from './post.css'
+import {withRouter} from 'react-router-dom'
 
-const Post=props=>{
+
+class Post extends Component{
+    componentDidMount(){
+        console.log(this.props)
+        
+    }
+    render(){
+
     return (
-        <div className={classes.post} onClick={props.clicked}>
+        <div className={classes.post} onClick={this.props.clicked}>
            
-            <h3> {props.info.title} </h3>
-            <p>{props.info.body}</p>
-            <em>Author: Serge Toure</em>
+            <h3> {this.props.info.title} </h3>
+            <p>{this.props.info.body}</p>
+           
         </div>
     )
 }
-export default Post
+}
+export default withRouter(Post)

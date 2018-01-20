@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
 import Post from './post'
 import axios from 'axios'
-import Fullpost from '../../fullpost'
+
 import Aux from '../../aux'
+import {Link} from 'react-router-dom'
 
 class Posts extends Component{
     constructor(props){
         super(props);
         this.state={
           posts:[],
-          postselected:null,
-          error:false
+         
         }
       }
     selectHandler=(id)=>{
-      this.setState({
-        postselected:id
-      })
+      this.props.history.push({pathname:'/'+id}) //push a new page on to the stack of the web app, you can goBack() or goForward()
     
     }
     componentDidMount(){
+     
+      
       let rul='/posts'
       
       axios.get(rul).then(response=> {
@@ -33,17 +33,25 @@ class Posts extends Component{
     
       render() {
         let posts=<h1 style={{'color':'red'}}>Something went wrong!</h1>
-       if( !this.state.error){ posts=this.state.posts.map((post)=><Post 
-                      key={post.id} 
-                      info={post}
-                      clicked={()=>this.selectHandler(post.id)}/>)}
+       if(!this.state.error){ 
+                      posts=this.state.posts.map((post)=>{
+                        return(
+                          //<Link style={{textDecoration:'none',color:'black',fontFamily:'sans-serif'}} key={post.id} to={{pathname:'/'+post.id}}>
+                                            
+                                <Post  
+                                              info={post}
+                                              clicked={()=>this.selectHandler(post.id)}/>
+                             //  </Link> 
+                            )
+       })}
+                               
         return (
           
             <Aux>
           
           {posts}
           
-          <Fullpost id={this.state.postselected}/>
+          
          
         </Aux>
            

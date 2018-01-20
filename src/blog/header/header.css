@@ -27,11 +27,11 @@
      border-bottom: 3px solid #2d5e19;
      background-color: bisque
  }
- .header nav a.active{
+ .active{
     background-color: bisque
     
  }
- .header nav a.my_active{
-    background-color:ghostwhite 
+ .my_active{
+    background-color:bisque
     
  }
